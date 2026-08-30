@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título Genérico para a Receita 1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left:-5px;
+            margin-right:-5px;
+        }
+  
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+    <body>
+        <div class="row">
+            <div class="column">
+                <table>
+                    <tr>
+                        <th> Bebida </th>
+                        <th> Preço </th>
+                    </tr>
+
+                    <tr>
+                        <td> Refrigerante </td>
+                        <td> R$ 5,00 </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="column">
+                <table>
+                    <tr>
+                        <th> Sobremesa </th>
+                        <th> Preço </th>
+                    </tr>
+
+                    <tr>
+                        <td> Sorvete </td>
+                        <td> R$ 7,00 </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <a href="https://www.w3schools.com/html/default.asp" target="_blank">
+            Aprenda Html
+        </a>
+
+  
+
+
+        
+    </body>
+</html>
