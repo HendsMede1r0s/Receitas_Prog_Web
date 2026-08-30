@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Questão 1 e 2: Estilização dos divs das cervejas */
+        .cerveja-item {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Questão 3: Tabela estilizada */
+        .tabela-cervejas {
+            width: 100%;
+            max-width: 400px;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .tabela-cervejas th, 
+        .tabela-cervejas td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .tabela-cervejas th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .tabela-cervejas tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .painel-botoes {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="painel-botoes">
+        <button onclick="carregarCervejas()">Carregar Cervejas (DIVs)</button>
+        <button onclick="carregarCervejasTabela()">Carregar Cervejas (Tabela)</button>
+        <!-- Questão 4: Botão ordenar -->
+        <button onclick="ordenarCervejas()">Mostrar Cervejas Ordenadas</button>
+        <!-- Questão 5: Botão embaralhar -->
+        <button onclick="embaralharCervejas()">Embaralhar Cervejas</button>
+    </div>
+
+    <div id="meu amor"></div>
+
+    <script>
+        let cervejas = ["Guinness", "Desperados", "Becks", "Corona", "Heineken"];
+
+        // Questão 1 e 2: Exibir em DIVs estilizados em vez de H1
+        function carregarCervejas() {
+            const div = document.getElementById("meu amor");
+            let html = cervejas.map(nome => `<div class="cerveja-item">${nome}</div>`).join("");
+            div.innerHTML = html;
+        }
+
+        // Questão 3: Transformar em tabela HTML estilizada
+        function carregarCervejasTabela() {
+            const div = document.getElementById("meu amor");
+            let html = `
+                <table class="tabela-cervejas">
+                    <thead>
+                        <tr><th>Nome da Cerveja</th></tr>
+                    </thead>
+                    <tbody>
+                        ${cervejas.map(nome => `<tr><td>${nome}</td></tr>`).join("")}
+                    </tbody>
+                </table>
+            `;
+            div.innerHTML = html;
+        }
+
+        // Questão 4: Ordenar usando o método nativo sort()
+        function ordenarCervejas() {
+            cervejas.sort();
+            carregarCervejasTabela();
+        }
+
+        // Questão 5: Embaralhar usando o método sort com comparador aleatório
+        function embaralharCervejas() {
+            cervejas.sort(() => Math.random() - 0.5);
+            carregarCervejasTabela();
+        }
+    </script>
+</body>
+</html>
