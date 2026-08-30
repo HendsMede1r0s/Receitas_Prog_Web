@@ -1,0 +1,41 @@
+p.verso{
+
+   color: blue;
+
+}
+
+p.mote{
+
+   color: red;
+
+}
+
+a:link{
+    
+    
+    color: yellow;
+
+}
+
+a:visited{
+
+    color: gray;
+
+}
+
+a:hover{
+
+    color: rgb(22, 206, 22);
+
+}
+
+
+
+.poeta img{
+
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+}
