@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Container do Botão (fica sempre visível) */
+        #painel-botoes {
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 18px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #2b2b2b;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #444444;
+        }
+
+        /* Container onde o texto da cerveja é exibido */
+        #painel-exibicao {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            min-height: 40px;
+            max-width: 250px;
+            font-weight: bold;
+            font-size: 18px;
+            
+            /* Efeito de transição suave na opacidade */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Classe utilitária para aplicar o Fade In */
+        #painel-exibicao.visivel {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="painel-botoes">
+        <button id="btn-cerveja" onclick="alternarCerveja()">Exibir Cerveja</button>
+    </div>
+
+    <!-- Div de exibição inicialmente vazio -->
+    <div id="painel-exibicao"></div>
+
+    <script>
+        function alternarCerveja() {
+            const painel = document.getElementById("painel-exibicao");
+            const botao = document.getElementById("btn-cerveja");
+
+            // Verifica se o texto já está visível
+            if (painel.classList.contains("visivel")) {
+                // Questão 3: Fade Out ao remover a classe visível
+                painel.classList.remove("visivel");
+                
+                // Espera a animação de fade-out terminar (500ms) para limpar o conteúdo
+                setTimeout(() => {
+                    painel.innerHTML = "";
+                    botao.innerText = "Exibir Cerveja";
+                }, 500);
+
+            } else {
+                // Questão 2 e 3: Atualiza o conteúdo e faz o Fade In
+                painel.innerHTML = "Guinness";
+                painel.classList.add("visivel");
+                botao.innerText = "Ocultar Cerveja";
+            }
+        }
+    </script>
+</body>
+
+</html>
