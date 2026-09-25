@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: aquamarine;
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+
+    <div id="cervejasDiv">
+
+    </div>
+
+</body>
+
+
+
+<script>
+
+
+    let cervejas = [
+
+        {
+            name: "Guiness",
+            alcohol: "10%",
+            style: 'Red Ale',
+            ibu: '20',
+        },
+
+        {
+            name: "Desperados",
+            alcohol: "6%",
+            style: 'English IPA',
+            ibu: '30',
+        },
+
+        {
+            name: "Becks",
+            alcohol: "5%",
+            style: 'APA',
+            ibu: '60',
+        }
+
+    ]
+
+
+
+    //cs é um array de cervejas
+
+    const carregarDiv = (cs, id = 'cervejasDiv', col = ['Nome', 'Alcool', 'Estilo', 'Amargor'], prop = ["name", "alcohol", "style", "ibu"]) => {
+
+        const cabecalho = col.map(coluna => `<th>${coluna}</th>`).join("")
+
+        const itensHtml = cs.map(item => {
+            const dados = prop.map(p => `<td>${item[p]}</td>`).join("")
+            return `<tr>${dados}</tr>`
+        })
+
+        document.getElementById(id).innerHTML = `
+        <table>
+            <thead>
+                <tr>${cabecalho}</tr>
+            </thead>
+            <tbody>
+                ${itensHtml.join("")}
+            </tbody>
+        </table>`
+    }
+
+
+    let botao = document.getElementById("botaoCarregar")
+
+    botao.addEventListener("click", () => carregarDiv(cervejas))
+
+
+</script>
+
+</html>
