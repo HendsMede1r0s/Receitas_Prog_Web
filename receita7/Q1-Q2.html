@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        table, tr, td, th{
+            border: 1px solid black;
+        }
+        td{
+            background-color: lightgray;
+        }
+        thead{
+            background-color: crimson;
+            color: white
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+
+    <div><button id="botaoCarregar">Carregando Pokemons...</button></div>
+
+    <div id="pokemonsDiv"></div>
+
+</body>
+
+
+
+<script>
+
+
+    let pokemons = []
+
+
+
+    const carregarDiv = cs => {
+
+        const div = document.getElementById("pokemonsDiv")
+
+        const itensHtml = cs.map(({name, id, height, weight}) => `
+        <tr>
+            <td>${name}</th>
+            <td>${id}</th>
+            <td>${height}</th>
+            <td>${weight}</th>
+        </tr>`)
+
+        div.innerHTML = `<table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>ID</th>
+                    <th>Altura</th>
+                    <th>Peso</th>    
+                </tr>
+            </thead>
+            <tbody>
+                ${itensHtml.join("\n")}
+            </tbody>
+        </table>`
+
+    }
+
+
+
+    async function carregarPokemon() {
+
+        try {
+
+            let res = await fetch("https://pokeapi.co/api/v2/pokemon/")
+
+            const data = await res.json()
+            for (let p of data.results) {
+                let resDetalhes = await fetch(p.url)
+                let dadosDetalhes = await resDetalhes.json()
+
+                pokemons.push(dadosDetalhes)
+            }
+
+
+            carregarDiv(pokemons)
+
+        } catch (err) {
+
+            document.getElementById("pokemonsDiv").innerHTML = "Fudeu..."
+
+        }
+
+    }
+
+
+
+
+    let botao = document.getElementById("botaoCarregar")
+
+    botao.addEventListener("click", () => carregarPokemon())
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, tr, td, th {
+            border: 1px solid black;
+        }
+
+        td {
+            background-color: lightgray;
+        }
+
+        thead {
+            background-color: crimson;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div><button id="botaoCarregar">Carregar Pokemons</button></div>
+
+    <div id="pokemonsDiv"></div>
+
+    <script>
+        let pokemons = []
+
+        const carregarDiv = cs => {
+            const div = document.getElementById("pokemonsDiv")
+
+            const itensHtml = cs.map(({ name, id, height, weight }) => `
+            <tr>
+                <td>${name}</td>
+                <td>${id}</td>
+                <td>${height}</td>
+                <td>${weight}</td>
+            </tr>`)
+
+            div.innerHTML = `<table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>ID</th>
+                        <th>Altura</th>
+                        <th>Peso</th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    ${itensHtml.join("\n")}
+                </tbody>
+            </table>`
+        }
+
+        function carregarPokemon() {
+            pokemons = [] // Reseta a lista a cada clique
+
+            // 1º fetch: busca a lista principal de Pokémon
+            fetch("https://pokeapi.co/api/v2/pokemon/")
+                .then(res => {
+                    if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`)
+                    return res.json()
+                })
+                .then(data => {
+                    // Mapeia o array de resultados transformando cada URL em uma nova Promise de fetch
+                    const requisicoesDetalhes = data.results.map(p => 
+                        fetch(p.url).then(resDetalhes => resDetalhes.json())
+                    )
+
+                    // Promise.all aguarda todas as requisições dos detalhes terminarem em paralelo
+                    return Promise.all(requisicoesDetalhes)
+                })
+                .then(dadosDetalhes => {
+                    pokemons = dadosDetalhes
+                    carregarDiv(pokemons)
+                })
+                .catch(err => {
+                    console.error(err)
+                    document.getElementById("pokemonsDiv").innerHTML = "Erro ao carregar dados..."
+                })
+        }
+
+        let botao = document.getElementById("botaoCarregar")
+        botao.addEventListener("click", carregarPokemon)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela Genérica em JS</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-family: sans-serif;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+        thead {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btnCarregar">Carregar Personagens (Rick and Morty)</button>
+    
+    <div id="minhaTabelaContainer"></div>
+
+    <script src="genericTable.js"></script>
+
+    <script>
+        function carregarPersonagens() {
+            // 1. Inicia a requisição fetch
+            fetch("https://rickandmortyapi.com/api/character")
+                .then(res => {
+                    // Trata possíveis erros HTTP (ex: 404, 500)
+                    if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`)
+                    return res.json()
+                })
+                .then(data => {
+                    // Configuração das colunas
+                    const colunasConfig = [
+                        { titulo: "ID", chave: "id" },
+                        { titulo: "Nome", chave: "name" },
+                        { titulo: "Status", chave: "status" },
+                        { titulo: "Espécie", chave: "species" },
+                        { titulo: "Origem", chave: item => item.origin?.name || "Desconhecida" }
+                    ]
+
+                    // Renderiza a tabela chamando a função genérica importada
+                    renderizarTabela("minhaTabelaContainer", data.results, colunasConfig)
+                })
+                .catch(err => {
+                    console.error(err)
+                    document.getElementById("minhaTabelaContainer").innerHTML = "Erro ao carregar dados."
+                })
+        }
+
+        document.getElementById("btnCarregar").addEventListener("click", carregarPersonagens)
+    </script>
+</body>
+</html>
