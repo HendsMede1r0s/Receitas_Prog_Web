@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minhas Receitas Web</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+      color: #1a252f;
+    }
+    p.subtitle {
+      margin-bottom: 2rem;
+      color: #666;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e1e8ed;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      border-color: #3498db;
+      color: #3498db;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Portal de Receitas Web</h1>
+  <p class="subtitle">Selecione uma receita abaixo para acessar:</p>
+
+  <div class="grid">
+    <a class="card" href="./Receita1/">Receita 1</a>
+    <a class="card" href="./Receita2/">Receita 2</a>
+    <a class="card" href="./Receita3/">Receita 3</a>
+    <a class="card" href="./Receita4/">Receita 4</a>
+    <a class="card" href="./Receita5/">Receita 5</a>
+    <a class="card" href="./Receita6/">Receita 6</a>
+    <a class="card" href="./Receita7/">Receita 7</a>
+    <a class="card" href="./Receita8/">Receita 8</a>
+  </div>
+
+</body>
+</html>
