@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minhas Receitas Web</title>
+  <title>Portal de Receitas Web</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f6f9;
@@ -19,18 +15,12 @@
       flex-direction: column;
       align-items: center;
     }
-    h1 {
-      margin-bottom: 0.5rem;
-      color: #1a252f;
-    }
-    p.subtitle {
-      margin-bottom: 2rem;
-      color: #666;
-    }
+    h1 { margin-bottom: 0.5rem; color: #1a252f; }
+    p.subtitle { margin-bottom: 2rem; color: #666; }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
       width: 100%;
       max-width: 900px;
     }
@@ -38,44 +28,67 @@
       background: #ffffff;
       border: 1px solid #e1e8ed;
       border-radius: 8px;
-      padding: 1.5rem;
+      padding: 1rem;
       text-align: center;
       text-decoration: none;
       color: #2c3e50;
       font-weight: 600;
-      font-size: 1.1rem;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       transition: all 0.2s ease-in-out;
     }
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
       border-color: #3498db;
       color: #3498db;
+    }
+    .section-title {
+      grid-column: 1 / -1;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #555;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
     }
   </style>
 </head>
 <body>
 
   <h1>Portal de Receitas Web</h1>
-  <p class="subtitle">Selecione uma receita abaixo para acessar:</p>
+  <p class="subtitle">Selecione uma receita para aceder:</p>
 
   <div class="grid">
+    <!-- Receita 1 -->
     <a class="card" href="./receita1/receita1.html">Receita 1</a>
-    <a class="card" href="./receita2/Q1-Q6/index.html">Receita 2: Q1-Q6</a>
-    <a class="card" href="./receita2/Q7/index.html">Receita 2: Q7</a>
+
+    <!-- Receita 2 -->
+    <a class="card" href="./receita2/Q1-Q6/receita2.html">Receita 2 (Q1-Q6)</a>
+    <a class="card" href="./receita2/Q7/th.html">Receita 2 (Q7)</a>
+
+    <!-- Receita 3 -->
     <a class="card" href="./receita3/index.html">Receita 3</a>
+
+    <!-- Receita 4 -->
     <a class="card" href="./receita4/receita4.html">Receita 4</a>
-    <a class="card" href="./receita5/Q1.html">Receita 5: Q1</a>
-    <a class="card" href="./receita5/Q2.html">Receita 5: Q2</a>
-    <a class="card" href="./receita5/Q3.html">Receita 5: Q3</a>
+
+    <!-- Receita 5 -->
+    <a class="card" href="./receita5/Q1.html">Receita 5 (Q1)</a>
+    <a class="card" href="./receita5/Q2.html">Receita 5 (Q2)</a>
+    <a class="card" href="./receita5/Q3.html">Receita 5 (Q3)</a>
+
+    <!-- Receita 6 -->
     <a class="card" href="./receita6/Q1-Q6.html">Receita 6</a>
-    <a class="card" href="./receita7/Q1-Q2.html">Receita 7: Q1-Q2</a>
-    <a class="card" href="./receita7/Q3.html">Receita 7: Q3</a>
-    <a class="card" href="./receita7/Q4.html">Receita 7: Q4</a>
-    <a class="card" href="./receita8/Q1-Q2.html">Receita 8: Q1-Q2</a>
-    <a class="card" href="./receita8/Q3.html">Receita 8: Q3</a>
-    <a class="card" href="./receita8/Q4.html">Receita 8: Q4</a>
+
+    <!-- Receita 7 -->
+    <a class="card" href="./receita7/Q1-Q2.html">Receita 7 (Q1-Q2)</a>
+    <a class="card" href="./receita7/Q3.html">Receita 7 (Q3)</a>
+    <a class="card" href="./receita7/Q4.html">Receita 7 (Q4)</a>
+
+    <!-- Receita 8 -->
+    <a class="card" href="./receita8/Q1-Q2.html">Receita 8 (Q1-Q2)</a>
+    <a class="card" href="./receita8/Q3-.html">Receita 8 (Q3)</a>
+    <a class="card" href="./receita8/Q4.html">Receita 8 (Q4)</a>
   </div>
 
 </body>
