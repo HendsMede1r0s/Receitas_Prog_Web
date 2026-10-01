@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        #tabela-cervejas {
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+        #tabela-cervejas tr, th, td {
+            border: 1px solid black;
+        }
+        #tabela-cervejas th, td {
+            padding: 4px;
+            text-align: left;
+        }
+        #tabela-cervejas thead{
+            background-color: orange;
+            color: white;
+        }
+        #tabela-cervejas tbody{
+            background-color: lightgray;
+            color: black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app"></div>
+    <button id="btn">Carregar tabela de Cervejas</button>
+
+
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+
+
+    <script type="text/babel">
+
+        const cervejas = [
+            { nome: "Havana", marca: "Engenho Anísio Santiago", ibu: 20 },
+            { nome: "Brahma", marca: "Ambev", ibu: 15 },
+            { nome: "Skol", marca: "Ambev", ibu: 10 },
+            { nome: "Heineken", marca: "Heineken N.V.", ibu: 25 },
+            { nome: "Budweiser", marca: "Anheuser-Busch InBev", ibu: 18 }
+        ];
+
+        function Cabecalho() {
+            return (
+                <div id="cabecalho">
+                    <h1>Minha Tabela de bebidas</h1>
+                </div>
+            );
+        }
+
+        function Tabela({ cervejaJson, nome, marca = null, ibu = null }) {
+            return (
+                <table id='tabela-cervejas'>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Marca</th>
+                            <th>IBU</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cervejaJson.map((cervs, index) => (
+                            <tr key={index}>
+                                <td>{cervs.nome}</td>
+                                <td>{cervs.marca}</td>
+                                <td>{cervs.ibu}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            );
+        }
+
+
+        document.getElementById("btn").addEventListener("click", () => {
+            ReactDOM.render(
+                <div>
+                    <Cabecalho />
+                    <Tabela cervejaJson={cervejas} />
+                </div>,
+                document.getElementById("app")
+            );
+        });
+
+    </script>
+
+
+</body>
+
+</html>
