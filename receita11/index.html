@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ReceitaReact - 2</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+
+    <script type="text/babel">
+
+        class Titulo extends React.Component {
+            render() {
+                return (
+                    <div id="titulo">
+                        <h1>{this.props.titulo}</h1>
+                    </div>
+                )
+            }
+        }
+
+        class BotaoTabela extends React.Component {
+            render(){
+                return (
+                <button onClick={this.props.onClick}>Mostrar Tabela</button>
+                )
+            }
+        }
+
+        class TabelaBebidas extends React.Component {
+
+            render() {
+                return (
+                    <div id="tabelaBebidas">
+                        <table id="tabela">
+                            <thead>
+                                <tr><th>Nome</th><th>Marca</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                )
+            }
+
+        }
+
+        const exibirTela = () => {
+            ReactDOM.render(
+                <div>
+                    <Titulo titulo="Tabela de Cana"/>
+                    <TabelaBebidas/>
+                </div>,
+                document.getElementById("app"))
+        }
+
+        ReactDOM.render(
+            <div>
+                <Titulo titulo="Tabela de Cana"/>
+                <BotaoTabela onClick={exibirTela}/>
+            </div>,
+            document.getElementById("app"))
+
+    </script>
+</body>
+
+</html>
