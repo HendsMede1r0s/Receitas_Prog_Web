@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>ReceitaReact - 3</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+
+    <script src="libs/react.js"></script>
+
+    <script src="libs/react-dom.js"></script>
+
+    <script src="libs/babel.js"></script>
+
+
+
+    <script type="text/babel">
+
+
+        const TabelaBebidas = ({ titulo, cabecalhos, dados }) => {
+
+            return (
+
+                <div>
+
+                    <h1>{titulo}</h1>
+
+                    <table id="tabela" border="1">
+
+                        <thead>
+                            <tr>
+                                {cabecalhos.map((cabs) => (<th>{cabs}</th>))}
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {dados.map((linha, indexLinha) => (
+                                <tr key={indexLinha}>
+                                    {Object.values(linha).map((celula, indexCelula) => (<td key={indexCelula}>{celula}</td>))}
+                                </tr>
+                            ))}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            )
+
+        }
+
+
+        const meusDados = [
+            { "nome": "Havana", "marca": "Engenho Anísio Santiago", "ibu": 0, "abv": "47.0%", "ebc": 12 },
+            { "nome": "Colorado Indica", "marca": "Cervejaria Colorado", "ibu": 45, "abv": "7.0%", "ebc": 30 },
+            { "nome": "Heineken", "marca": "Heineken N.V.", "ibu": 19, "abv": "5.0%", "ebc": 8 },
+            { "nome": "Guinness Draught", "marca": "Diageo", "ibu": 45, "abv": "4.2%", "ebc": 130 },
+            { "nome": "Hoegaarden", "marca": "Brouwerij van Hoegaarden", "ibu": 15, "abv": "4.9%", "ebc": 6 }
+        ];
+
+        // Definimos o vetor com os títulos das colunas
+        const titulosColunas = ["Nome", "Marca", "IBU", "ABV", "EBC"];
+
+        ReactDOM.render(
+
+            <TabelaBebidas titulo="minha tabela de cana" cabecalhos={titulosColunas} dados={meusDados} />
+
+            ,
+
+            document.getElementById("app"))
+
+    </script>
+</body>
+
+</html>
