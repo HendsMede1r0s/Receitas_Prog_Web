@@ -1,0 +1,30 @@
+[
+  {
+    "imdbID": "br001",
+    "Title": "O Auto da Compadecida",
+    "Year": "2000",
+    "Type": "movie",
+    "Poster": "N/A"
+  },
+  {
+    "imdbID": "br002",
+    "Title": "Cidade de Deus",
+    "Year": "2002",
+    "Type": "movie",
+    "Poster": "N/A"
+  },
+  {
+    "imdbID": "br003",
+    "Title": "Bacurau",
+    "Year": "2019",
+    "Type": "movie",
+    "Poster": "N/A"
+  },
+  {
+    "imdbID": "br004",
+    "Title": "Central do Brasil",
+    "Year": "1998",
+    "Type": "movie",
+    "Poster": "N/A"
+  }
+]
